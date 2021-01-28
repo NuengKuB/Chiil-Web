@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  background-color: #202020;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #202020;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  opacity: 0.5;
+  z-index: -2;
+}
+#particles-js.login {
+  background-image: url("https://images.unsplash.com/photo-1478172326435-839f111a16c5?dpr=1&auto=format&fit=crop&w=1199&h=800&q=80&cs=tinysrgb&crop=");
+}
+
+/* ---- stats.js ---- */
+.boton {
+  padding: 0.2em 2em;
+  color: #323232 !important;
+  border: none;
+  background-color: #eee;
+  box-shadow: 0 2px 0 0 #323232;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boton:hover {
+  cursor: pointer;
+  background-color: #eee;
+  box-shadow: 0 10x 0 0 #000;
+}
+
+[modal=modal__overlay] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0);
+  transition: all 500ms;
+  z-index: -1;
+}
+[modal=modal__overlay].visible {
+  background-color: rgba(50, 50, 50, 0.3);
+  z-index: 1;
+}
+
+[modal=modal__contain] {
+  will-change: visibility, opacity;
+  width: 80%;
+  min-height: 400px;
+  height: 50vh;
+  position: absolute;
+  overflow-y: auto;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 500ms;
+}
+[modal=modal__contain].small {
+  width: 500px;
+  min-height: 450px;
+  height: 100%;
+  max-height: 450px;
+}
+[modal=modal__contain].login {
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: none;
+}
+[modal=modal__contain].login .modal__header--title, [modal=modal__contain].login .modal__header--text {
+  color: white;
+}
+[modal=modal__contain].login:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+[modal=modal__contain] > [class^=modal__] {
+  padding: 0.5rem;
+}
+[modal=modal__contain] .modal__content {
+  max-height: 100%;
+}
+[modal=modal__contain] .modal__header {
+  padding-bottom: 5px;
+  box-shadow: -1px 0 0 0 transparent, 1px 0 1px 0 transparent, 0 1px 0 0 grey;
+}
+[modal=modal__contain] .modal__header--title {
+  margin: 0 0 5px 0;
+}
+[modal=modal__contain] .modal__footer {
+  padding-top: 5px;
+  box-shadow: 0 -1px 0 0 grey;
+  max-height: 4rem;
+  min-height: 2rem;
+}
+[modal=modal__contain] .modal__close {
+  border-radius: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem 0.6rem;
+  position: absolute;
+  top: 0;
+  left: auto;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 350ms;
+}
+[modal=modal__contain] .modal__close:hover {
+  background-color: #323232;
+  color: white;
+  cursor: pointer;
+}
+[modal=modal__contain].open {
+  opacity: 1;
+  z-index: 2;
+}
+
+form {
+  width: 100%;
+}
+
+.container__absolute {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formLogin {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 500ms;
+  width: 500px;
+  min-width: 500px;
+  height: 500px;
+  will-change: visibility, opacity;
+}
+.formLogin__header {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+.formLogin__header--title {
+  color: white;
+}
+.formLogin__content {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formLogin__content--text {
+  color: white;
+}
+.formLogin__footer {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formLogin::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(45deg);
+  transform-origin: center;
+  width: 80%;
+  height: 80%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+  opacity: 0.4;
+  will-change: visibility, opacity;
+}
+.formLogin .input-field {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.formLogin .input-field input[type=text], .formLogin .input-field input[type=password], .formLogin .input-field input[type=email] {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: calc(100% - 3rem);
+  box-shadow: none;
+  padding: 0 1rem;
+  margin: 0 auto;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+}
+.formLogin .input-field input[type=submit] {
+  height: 2rem;
+  width: 80%;
+  border-bottom: 4px solid grey;
+}
+.formLogin .input-field label {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+.formLogin .input-field label.icono {
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+.formLogin input[type=submit] {
+  height: 3rem;
+  width: 50%;
+  padding: 1rem;
+  margin: auto;
+  display: block;
+  border-bottom: 4px solid grey;
+}
